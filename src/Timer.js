@@ -7,19 +7,14 @@ export default class TimerDisplay extends Component {
     super(props);
 
     this.state = {
-      then: "April 09, 1865",
-      todaysDate: moment().format("MMMM DD, YYYY"),
+      then: "1865",
+      now: moment().format("YYYY"),
+      todaysDate: moment().format("MMMM Do, YYYY"),
     };
   }
 
-  componentDidMount = () => {
-    return this.getDurationInYears();
-  };
-
   getDurationInYears = () => {
-    moment(this.state.todaysDate, "MMMM DD, YYYY").diff(
-      moment(this.state.then, "MMMM DD, YYYYH")
-    );
+    return moment(this.state.now).diff(moment(this.state.then));
   };
 
   render() {
@@ -30,12 +25,10 @@ export default class TimerDisplay extends Component {
       >
         <h1>Since April 9, 1865</h1>
         <h1>Since June 19, 1865</h1>
-
         <h1>Since December 6, 1865</h1>
-        <h1>00:00:00</h1>
-        <h1>{this.getDurationInYears()} have passed</h1>
+
+        <h1> {this.getDurationInYears()} have passed</h1>
         <div>{this.state.todaysDate.toLocaleString()}</div>
-        {/* <h2>Have passed.</h2> */}
       </div>
     );
   }
