@@ -7,14 +7,14 @@ export default class TimerDisplay extends Component {
     super(props);
 
     this.state = {
-      then: "1865",
-      now: moment().format("YYYY"),
-      todaysDate: moment().format("MMMM Do, YYYY"),
+      then: moment(1865, 3, 4),
+      now: moment(new Date()),
+      todaysDate: moment().format("MMMM DD, YYYY"),
     };
   }
 
   getDurationInYears = () => {
-    return moment(this.state.now).diff(moment(this.state.then));
+    return this.state.then.add(this.state.now, "years");
   };
 
   render() {
