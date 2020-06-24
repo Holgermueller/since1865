@@ -20,8 +20,7 @@ export default class TimerDisplay extends Component {
   };
 
   getDurationInMonths = () => {
-    let dur = moment.duration(this.state.now - this.state.then);
-    return dur.months();
+    return this.state.now.diff(this.state.then, "months");
   };
 
   render() {
