@@ -32,7 +32,7 @@ export default class CWDisplay extends Component {
 
   render() {
     return (
-      <Card>
+      <Card style={{ margin: "2% auto" }}>
         <CardHeader title="Since December 6th, 1865" />
 
         <CardContent>

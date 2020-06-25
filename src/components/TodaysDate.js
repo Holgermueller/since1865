@@ -13,7 +13,7 @@ export default class TodaysDate extends Component {
 
   render() {
     return (
-      <Card>
+      <Card style={{ margin: "2% auto" }}>
         <CardContent>
           <h1>Today's date is : {this.state.todaysDate}</h1>
         </CardContent>
