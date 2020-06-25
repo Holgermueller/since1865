@@ -15,12 +15,15 @@ export default class TimerDisplay extends Component {
 
   getDurationInYears = () => {
     let dur = this.state.now - this.state.then;
-    let x = moment.duration(dur);
-    return x.years();
+    let years = moment.duration(dur);
+    return years.years();
   };
 
   getDurationInMonths = () => {
-    return this.state.now.diff(this.state.then, "months");
+    let dur = this.state.now - this.state.then;
+    let x = moment.duration(dur);
+    let mos = moment.duration(dur).months();
+    return x.years() * 12 + mos;
   };
 
   render() {
@@ -34,9 +37,9 @@ export default class TimerDisplay extends Component {
         <h1>Since June 19, 1865</h1>
         <h1>Since December 6, 1865</h1>
 
-        <h1> {this.getDurationInYears()} years have passed</h1>
+        <h1> {this.getDurationInYears()} years have passed.</h1>
 
-        <div>{this.getDurationInMonths()}</div>
+        <div>{this.getDurationInMonths()} months have passed.</div>
       </div>
     );
   }
