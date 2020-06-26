@@ -53,8 +53,8 @@ export default class CWDisplay extends Component {
 
           <div>{this.getDurationTotalMonths()} months have passed.</div>
         </CardContent>
-        <CardActions>
-          <Button>Button</Button>
+        <CardActions style={{ justifyContent: "center" }}>
+          <Button size="large">Significance of this date</Button>
         </CardActions>
       </Card>
     );
