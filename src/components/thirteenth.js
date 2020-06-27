@@ -41,7 +41,12 @@ export default class CWDisplay extends Component {
           <div>{this.getDurationInMonths()} months have passed.</div>
         </CardContent>
         <CardActions style={{ justifyContent: "center" }}>
-          <Button size="large">Significance of this date</Button>
+          <a
+            href="https://www.archives.gov/historical-docs/13th-amendment#:~:text=Passed%20by%20Congress%20on%20January,within%20the%20United%20States%2C%20or"
+            style={{ textDecoration: "none" }}
+          >
+            <Button size="large">Significance of this date</Button>
+          </a>
         </CardActions>
       </Card>
     );
