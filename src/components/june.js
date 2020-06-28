@@ -23,11 +23,32 @@ export default class CWDisplay extends Component {
     return moment.duration(dur).years();
   };
 
+  getMonthsDuration = () => {
+    let dur = this.state.now - this.state.then;
+    return moment.duration(dur).months();
+  };
+
+  getDaysDuration = () => {
+    let dur = this.state.now - this.state.then;
+    return moment.duration(dur).days();
+  };
+
+  displayAllDateInfo = () => {
+    return (
+      this.getDurationInYears() +
+      " years, " +
+      this.getMonthsDuration() +
+      " months, and " +
+      this.getDaysDuration() +
+      " days have passed."
+    );
+  };
+
   getDurationInMonths = () => {
     let dur = this.state.now - this.state.then;
     let years = moment.duration(dur);
     let mos = moment.duration(dur).months();
-    return years.years() * 12 + mos;
+    return years.years() * 12 + mos + " months have passed.";
   };
 
   render() {
@@ -36,9 +57,9 @@ export default class CWDisplay extends Component {
         <CardHeader title="Since June 19th, 1865" />
 
         <CardContent>
-          <h1> {this.getDurationInYears()} years have passed.</h1>
+          <h1>{this.displayAllDateInfo()}</h1>
 
-          <div>{this.getDurationInMonths()} months have passed.</div>
+          <div>{this.getDurationInMonths()} </div>
         </CardContent>
         <CardActions style={{ justifyContent: "center" }}>
           <Button size="large">Significance of this date</Button>

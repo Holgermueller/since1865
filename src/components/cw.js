@@ -33,6 +33,17 @@ export default class CWDisplay extends Component {
     return moment.duration(dur).days();
   };
 
+  displayAllDateInfo = () => {
+    return (
+      this.getDurationInYears() +
+      " years, " +
+      this.getMonthsDuration() +
+      " months, and " +
+      this.getDaysDuration() +
+      " days have passed."
+    );
+  };
+
   getDurationTotalMonths = () => {
     let dur = this.state.now - this.state.then;
     let years = moment.duration(dur);
@@ -46,10 +57,7 @@ export default class CWDisplay extends Component {
         <CardHeader title="Since April 9th, 1865" />
 
         <CardContent>
-          <h1>
-            {this.getDurationInYears()} years, {this.getMonthsDuration()}
-            months, and {this.getDaysDuration()} days have passed.
-          </h1>
+          <h1>{this.displayAllDateInfo()}</h1>
 
           <div>{this.getDurationTotalMonths()} months have passed.</div>
         </CardContent>
