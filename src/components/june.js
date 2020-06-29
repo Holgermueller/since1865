@@ -33,6 +33,14 @@ export default class CWDisplay extends Component {
     return moment.duration(dur).days();
   };
 
+  getLeapYears = () => {
+    let dur = this.state.now - this.state.then;
+    if (moment.duration(dur).isLeapYear()) {
+      let leapDays = 0;
+      return leapDays++;
+    }
+  };
+
   displayAllDateInfo = () => {
     return (
       this.getDurationInYears() +
@@ -60,6 +68,8 @@ export default class CWDisplay extends Component {
           <h1>{this.displayAllDateInfo()}</h1>
 
           <div>{this.getDurationInMonths()} </div>
+
+          <div>{this.getLeapYears()}</div>
         </CardContent>
         <CardActions style={{ justifyContent: "center" }}>
           <Button size="large">Significance of this date</Button>
