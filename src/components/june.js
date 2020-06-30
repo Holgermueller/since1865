@@ -34,11 +34,26 @@ export default class CWDisplay extends Component {
   };
 
   getLeapYears = () => {
-    let dur = this.state.now - this.state.then;
-    if (moment.duration(dur).isLeapYear()) {
-      let leapDays = 0;
-      return leapDays++;
+    let leapYearCount = 0,
+      then = this.state.then,
+      now = this.state.now,
+      beginYear = 0,
+      endYear = 0;
+
+    let isLeapYear = function (year) {
+      return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+    };
+
+    if (now < then) {
     }
+
+    for (let i = beginYear; i <= endYear; i++) {
+      if (isLeapYear(i)) {
+        leapYearCount++;
+      }
+    }
+
+    return leapYearCount;
   };
 
   displayAllDateInfo = () => {
