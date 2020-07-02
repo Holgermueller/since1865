@@ -33,27 +33,14 @@ export default class CWDisplay extends Component {
     return moment.duration(dur).days();
   };
 
-  getLeapYears = () => {
-    let leapYearCount = 0,
-      then = this.state.then,
-      now = this.state.now,
-      beginYear = 0,
-      endYear = 0;
+  generateArrayOfYears = () => {
+    let yearsInRange = [];
 
-    let isLeapYear = function (year) {
-      return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
-    };
-
-    if (now < then) {
+    for (let years = this.state.then; years <= this.state.now; years++) {
+      return yearsInRange.push(years);
     }
 
-    for (let i = beginYear; i <= endYear; i++) {
-      if (isLeapYear(i)) {
-        leapYearCount++;
-      }
-    }
-
-    return leapYearCount;
+    console.log(yearsInRange);
   };
 
   displayAllDateInfo = () => {
@@ -84,7 +71,7 @@ export default class CWDisplay extends Component {
 
           <div>{this.getDurationInMonths()} </div>
 
-          <div>{this.getLeapYears()}</div>
+          <div>{this.generateArrayOfYears()}</div>
         </CardContent>
         <CardActions style={{ justifyContent: "center" }}>
           <Button size="large">Significance of this date</Button>
