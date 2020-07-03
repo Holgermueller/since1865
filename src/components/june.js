@@ -36,11 +36,29 @@ export default class CWDisplay extends Component {
   generateArrayOfYears = () => {
     let yearsInRange = [];
 
-    for (let years = this.state.then; years <= this.state.now; years++) {
-      return yearsInRange.push(years);
+    for (let Then = this.state.then; Then > this.state.now; Then++) {
+      return yearsInRange.push(moment(Then).format("YYYY"));
     }
 
-    console.log(yearsInRange);
+    // console.log(yearsInRange);
+
+    // let anotherArray = [];
+
+    // yearsInRange.forEach((year) => {
+    //   if (this.testLeapYear(year)) anotherArray.push(year);
+    // });
+    // console.log(anotherArray);
+  };
+
+  testLeapYear = (year) => {
+    if (
+      (year % 4 === 0 && year % 100 !== 0) ||
+      (year % 100 === 0 && year % 4000 === 0)
+    ) {
+      return year;
+    } else {
+      return false;
+    }
   };
 
   displayAllDateInfo = () => {
@@ -71,7 +89,7 @@ export default class CWDisplay extends Component {
 
           <div>{this.getDurationInMonths()} </div>
 
-          <div>{this.generateArrayOfYears()}</div>
+          <div>Years in array: {this.generateArrayOfYears()}</div>
         </CardContent>
         <CardActions style={{ justifyContent: "center" }}>
           <Button size="large">Significance of this date</Button>
