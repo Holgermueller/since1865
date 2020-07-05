@@ -6,7 +6,10 @@ import {
   CardHeader,
   Button,
 } from "@material-ui/core";
-import moment from "moment";
+import { Moment, moment } from "moment";
+import { extendedMoment } from "moment-range";
+
+const moment = extendedMoment(Moment);
 
 export default class CWDisplay extends Component {
   constructor(props) {
@@ -34,24 +37,18 @@ export default class CWDisplay extends Component {
   };
 
   generateArrayOfYears = () => {
-    let yearsInRange = [];
+    let then = this.state.then;
+    let now = this.state.now;
+    let yearsInRange = moment.range(then, now);
 
-    let Then = moment(this.state.then).add(1, "year").format("YYYY");
+    // let Then = moment(this.state.then).add(1, "year").format("YYYY");
 
-    yearsInRange.push(Then);
-
-    let andThen = moment(Then).add(1, "year").format("YYYY");
-
-    yearsInRange.push(andThen);
+    //   while (moment(now).diff(moment(then), "years") >= 0) {
+    //     yearsInRange.push(moment(then).add(1, "year").format("YYYY"));
+    //     moment(then).add(1, "year").format("YYYY");
+    //   }
 
     console.log(yearsInRange);
-
-    // let anotherArray = [];
-
-    // yearsInRange.forEach((year) => {
-    //   if (this.testLeapYear(year)) anotherArray.push(year);
-    // });
-    // console.log(anotherArray);
   };
 
   testLeapYear = (year) => {
