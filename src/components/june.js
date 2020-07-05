@@ -36,15 +36,13 @@ export default class CWDisplay extends Component {
   generateArrayOfYears = () => {
     let yearsInRange = [];
 
-    //let Then = moment(this.state.then).add(1, "year").format("YYYY");
+    let Then = moment(this.state.then).add(1, "year").format("YYYY");
 
-    for (
-      let Then = this.state.then;
-      Then <= this.state.now;
-      moment(Then).add(1, "year").format("YYYY")
-    ) {
-      return yearsInRange.push(Then);
-    }
+    yearsInRange.push(Then);
+
+    let andThen = moment(Then).add(1, "year").format("YYYY");
+
+    yearsInRange.push(andThen);
 
     console.log(yearsInRange);
 
